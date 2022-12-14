@@ -1,0 +1,151 @@
+@emptyProperty: "";
+
+.hide() {
+    display: none;
+}
+
+.show() {
+    display: block;
+}
+
+.mxn_flex(@display:flex, @flex-direction:@emptyProperty, @justify-content:@emptyProperty, @align-items:@emptyProperty) {
+    & when not ( @display = @emptyProperty ) {
+        display: ~"-ms-@{display}box";
+        display: ~"-webkit-@{display}";
+        display: @display;
+    }
+    & when not ( @flex-direction = @emptyProperty ) {
+        -ms-flex-direction: @flex-direction;
+        flex-direction: @flex-direction;
+    }
+    & when not ( @justify-content = @emptyProperty ) {
+        -ms-flex-pack: replace(~"@{justify-content}", "flex-", "");
+        justify-content: @justify-content;
+    }
+    & when not ( @align-items = @emptyProperty ) {
+        -ms-flex-align: replace(~"@{align-items}", "flex-", "");
+        align-items: @align-items;
+    }
+}
+
+.flex() {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.inline_flex() {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+
+.flex_dir(@direction: row) {
+    -webkit-flex-direction: @direction;
+    -ms-flex-direction: @direction;
+    flex-direction: @direction;
+}
+
+.flex_wrap(@wrap: nowrap) {
+    -webkit-flex-wrap: @wrap;
+    -ms-flex-wrap: @wrap;
+    flex-wrap: @wrap;
+}
+
+.flex_order(@order: 0) {
+    -webkit-order: @order;
+    -ms-order: @order;
+    order: @order;
+}
+
+.flex_grow(@grow: 0) {
+    -webkit-flex-grow: @grow;
+    -ms-flex-grow: @grow;
+    flex-grow: @grow;
+}
+
+.flex_shrink(@shrink: 1) {
+    -webkit-flex-shrink: @shrink;
+    -ms-flex-shrink: @shrink;
+    flex-shrink: @shrink;
+}
+
+.flex_jc(@justify: flex-start) {
+    -webkit-justify-content: @justify;
+    -ms-justify-content: @justify;
+    justify-content: @justify;
+}
+
+.flex_ac(@align: stretch) {
+    -webkit-align-content: @align;
+    -ms-align-content: @align;
+    align-content: @align;
+}
+
+.flex_ai(@align: stretch) {
+    -webkit-align-items: @align;
+    -ms-align-items: @align;
+    align-items: @align;
+}
+
+.flex_as(@align: auto) {
+    -webkit-align-self: @align;
+    -ms-align-self: @align;
+    align-self: @align;
+}
+
+.absolute_center(@value:0) {
+    position: absolute;
+    top: @value;
+    right: @value;
+    bottom: @value;
+    left: @value;
+    margin: auto;
+}
+
+.square(@dimension) {
+    width: @dimension * 1px;
+    height: @dimension * 1px;
+}
+
+.circle(@dimension) {
+    width: @dimension * 1px;
+    height: @dimension * 1px;
+    border-radius: calc(@dimension / 2);
+}
+
+.size(@width,@height) {
+    width: @width * 1px;
+    height: @height * 1px;
+}
+
+.transition(@arguments1) {
+    -webkit-transition: @arguments1;
+    transition: @arguments1;
+}
+
+.transform(@arguments) {
+    -webkit-transform: @arguments;
+    -ms-transform: @arguments;
+    transform: @arguments;
+}
+
+.scale(@string) {
+    -webkit-transform: scale(@string);
+    transform: scale(@string);
+}
+
+.rotate(@string) {
+    -webkit-transform: rotate(@string);
+    transform: rotate(@string);
+}
+
+.width_grid(@width: @content-width) {
+    padding-right: calc(~"(100% - @{width}) / 2");
+    padding-left: calc(~"(100% - @{width}) / 2");
+}
+
+.image-holder(@fit: cover) {
+    .absolute_center;
+    width: 100%;
+    height: 100%;
+    object-fit: @fit;
+}

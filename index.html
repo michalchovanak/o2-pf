@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="sk-SK">
+    <head>
+        <title>PF2023 | O2</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+        <meta name="description" content="PF2023 | O2" />
+        <meta name="author" content="MK" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <audio loop>
+            <source type="audio/wav" />
+        </audio>
+        <div class="slide-1">
+            <div class="top-area">
+                <svg class="logo" viewBox="0 0 253 291" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M149.694,133.887L147,133.8C139.1,133.8 131.1,135.8 124.1,139.3L125.3,152.1C130.4,148.8 136.6,145.9 143.1,145.9C149.4,145.9 155.7,149.2 155.7,156.3C155.7,170.5 129.5,192.4 122.3,199.3L122.3,212.2L173.6,212.2L173.6,200.2L142.1,200.2C154.7,187.8 171.2,172.8 171.2,156.4C171.2,142.15 162.85,134.755 149.694,133.887ZM78.7,0L0,0L0,33.3C9.2,23.2 21.8,16.7 37.2,16.7C71.4,16.7 91.6,48.8 91.6,82C91.6,113.1 74.9,147.3 37.2,147.3C21.1,147.3 8.8,141.1 0,131.6L0,165.5C11.1,170.5 23.6,173.3 37.2,173.3C89.5,173.3 125.7,131.9 125.7,82C125.8,44.5 107.9,14.4 78.7,0Z" style="fill: #ffffff" />
+                </svg>
+                <ul>
+                    <li>pandémia</li>
+                    <li>kríza</li>
+                    <li>vojna</li>
+                    <li>viera</li>
+                    <li>politika</li>
+                    <li>hip-hop</li>
+                    <li>doplňte si sami</li>
+                </ul>
+                <strong>Sú témy, v ktorých nie je ľahké nájsť</strong>
+            </div>
+            <div class="button-area">
+                <a href="#" class="button">Spoločnú reč</a>
+            </div>
+            <div class="bottom-area"></div>
+        </div>
+        <div class="slide-2">
+            <div class="top-area">
+                <svg class="logo" viewBox="0 0 253 291" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M149.694,133.887L147,133.8C139.1,133.8 131.1,135.8 124.1,139.3L125.3,152.1C130.4,148.8 136.6,145.9 143.1,145.9C149.4,145.9 155.7,149.2 155.7,156.3C155.7,170.5 129.5,192.4 122.3,199.3L122.3,212.2L173.6,212.2L173.6,200.2L142.1,200.2C154.7,187.8 171.2,172.8 171.2,156.4C171.2,142.15 162.85,134.755 149.694,133.887ZM78.7,0L0,0L0,33.3C9.2,23.2 21.8,16.7 37.2,16.7C71.4,16.7 91.6,48.8 91.6,82C91.6,113.1 74.9,147.3 37.2,147.3C21.1,147.3 8.8,141.1 0,131.6L0,165.5C11.1,170.5 23.6,173.3 37.2,173.3C89.5,173.3 125.7,131.9 125.7,82C125.8,44.5 107.9,14.4 78.7,0Z" style="fill: #0019a5" />
+                </svg>
+                <span class="heading">PF 2023</span>
+            </div>
+            <div class="button-area">
+                <a href="#" class="button">Spoločnú reč</a>
+            </div>
+            <div class="bottom-area">
+                <strong>Však ľahko nájdeme v tom, čo si všetci želáme.</strong>
+                <ul>
+                    <li>lásku</li>
+                    <li>šťastie</li>
+                    <li>porozumenie</li>
+                    <li>mier</li>
+                    <li>zdravie</li>
+                    <li>úspech</li>
+                    <li>empatiu</li>
+                    <li>doplňte si sami</li>
+                </ul>
+                <p>Myslime na to v nadchádzajúcom roku.</p>
+            </div>
+        </div>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                const body = document.getElementsByTagName("body")[0];
+
+                let audio = document.getElementsByTagName("audio")[0];
+                let source = document.getElementsByTagName("source")[0];
+
+                let start = document.getElementsByClassName("slide-1")[0];
+                let button = document.getElementsByClassName("button")[0];
+
+                start.addEventListener("click", () => addBodyClass(event, "1"), { once: true });
+                button.addEventListener("click", () => addBodyClass(event, "2"), { once: true });
+
+                function addBodyClass(event, iteration) {
+                    event.preventDefault();
+
+                    source.src = "assets/audio/slide-" + iteration + ".wav";
+
+                    audio.pause();
+                    audio.load();
+
+                    audio.oncanplaythrough = audio.play();
+
+                    if (iteration == "1") {
+                        setTimeout(function () {
+                            button.click();
+                        }, 17000);
+                    }
+
+                    if (!body.classList.contains("active-slide-" + iteration)) {
+                        body.classList.add("active-slide-" + iteration);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
